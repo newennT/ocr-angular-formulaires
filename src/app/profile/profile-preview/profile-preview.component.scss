@@ -1,0 +1,83 @@
+.profile-form-section,
+.profile-preview-section {
+  background: #1e293b;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.profile-form-section h1,
+.profile-preview-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #818cf8 0%, #c4b5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Preview Card Styles */
+.preview-card {
+  background: #0f172a;
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.preview-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.preview-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  margin-bottom: 0.5rem;
+}
+
+.preview-title {
+  color: #94a3b8;
+  font-size: 1.125rem;
+}
+
+.preview-bio {
+  color: #94a3b8;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.preview-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.preview-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e2e8f0;
+  text-decoration: none;
+  width: 3rem;
+  height: 3rem;
+  background: #1e293b;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  font-size: 1.25rem;
+}
+
+.preview-link:hover {
+  background: linear-gradient(135deg, #818cf8 0%, #c4b5fd 100%);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 15px rgba(129, 140, 248, 0.4);
+}

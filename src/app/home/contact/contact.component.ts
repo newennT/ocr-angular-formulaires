@@ -1,18 +1,17 @@
 import { Component, inject } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { distinctUntilChanged, filter, map } from 'rxjs';
 import { CoursesService } from '../courses/courses.service';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { tap, map, filter, distinctUntilChanged  } from 'rxjs';
-import { CourseCardComponent } from '../courses/course-card/course-card.component';
 import { AsyncPipe } from '@angular/common';
+import { CourseCardComponent } from '../courses/course-card/course-card.component';
+import { URL_REGEX } from '../../core/constants/URL_REGEX';
 
 @Component({
   selector: 'app-contact',
   imports: [
     ReactiveFormsModule,
-    CourseCardComponent,
     AsyncPipe,
-
+    CourseCardComponent
   ],
   styleUrls: ['contact.component.scss'],
   templateUrl: './contact.component.html',
@@ -20,12 +19,14 @@ import { AsyncPipe } from '@angular/common';
 export class ContactComponent {
   private formBuilder = inject(FormBuilder);
   private coursesService = inject(CoursesService);
+
   contactForm = this.formBuilder.group({
-    name: [''],
-    email: [''],
-    course: [''],
-    message: ['']
-  });
+    name: ['', [Validators.required] ],
+    email: ['', [Validators.required, Validators.email]],
+    course: ['', [Validators.required]],
+    message: [''],
+    avatarUrl: ['', [Validators.pattern(URL_REGEX)]],
+  }, {updateOn: 'blur'});
 
   selectedCourse$ = this.contactForm.valueChanges.pipe(
     map(form => form.course),
@@ -34,8 +35,13 @@ export class ContactComponent {
     map(course => this.coursesService.getCourseByType(course)),
   );
 
-  onSubmitForm(): void{
+  avatarUrl$ = this.contactForm.get('avatarUrl')!.valueChanges;
+
+  onSubmitForm() {
+    if(!this.contactForm.valid) {
+      alert('Invalid form');
+      return;
+    }
     console.log(this.contactForm.value);
   }
-
 }

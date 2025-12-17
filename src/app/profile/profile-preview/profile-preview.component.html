@@ -1,0 +1,32 @@
+@let userProfile = profile();
+
+<section class="profile-preview-section">
+	<h2>Profile Preview</h2>
+	<div class="preview-card">
+		<div class="preview-header">
+			@if (userProfile.name; as name) {
+				<h3 id="previewName">{{ name }}</h3>
+			}
+			@if (userProfile.title; as title) {
+				<p id="previewTitle" class="preview-title">{{ title }}</p>
+			}
+		</div>
+		<div class="preview-body">
+			@if (userProfile.bio; as bio) {
+				<p id="previewBio" class="preview-bio">{{ bio }}</p>
+			}
+			<div class="preview-links">
+				@if (userProfile.website; as website) {
+					<a id="previewWebsite" [href]="website" target="_blank" class="preview-link">
+						<i class="fas fa-globe"></i>
+					</a>
+				}
+				@if (userProfile.github; as github) {
+					<a id="previewGithub" [href]="'https://github.com/' + github" target="_blank" class="preview-link">
+						<i class="fab fa-github"></i>
+					</a>
+				}
+			</div>
+		</div>
+	</div>
+</section>
