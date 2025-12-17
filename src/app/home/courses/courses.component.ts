@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Course } from '../../core/models/course';
 import { CourseCardComponent } from './course-card/course-card.component';
+import { CoursesService } from './courses.service';
 
 @Component({
   selector: 'app-courses',
@@ -20,18 +21,6 @@ import { CourseCardComponent } from './course-card/course-card.component';
   `
 })
 export class CoursesComponent {
-  courses: Course[] = [
-    {
-      title: 'HTML & Web Foundations',
-      description: 'Build the foundation of modern web applications with semantic HTML and best practices'
-    },
-    {
-      title: 'Modern CSS & Design',
-      description: 'Create stunning user interfaces with advanced CSS techniques and modern design principles'
-    },
-    {
-      title: 'JavaScript Mastery',
-      description: 'Develop interactive web applications with modern JavaScript and popular frameworks'
-    },
-  ];
+  coursesService = inject(CoursesService);
+  courses: Course[] = this.coursesService.getCourses();
 }

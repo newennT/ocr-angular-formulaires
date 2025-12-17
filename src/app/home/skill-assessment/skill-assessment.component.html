@@ -1,0 +1,45 @@
+<section class="skill-assessment">
+	<div class="skill-container">
+		<h2>What's Your Current Level?</h2>
+		<p>Help us recommend the perfect learning path for you</p>
+		<form class="skill-form" #skillForm="ngForm" (ngSubmit)="onSubmitForm(skillForm)">
+			<div class="skill-options">
+				<div class="skill-option">
+					<input type="radio"
+								 id="beginner"
+								 name="skillLevel"
+								 value="beginner"
+								 [(ngModel)]="skillLevel"
+								 required>
+					<label for="beginner">
+						<span class="skill-title">Beginner</span>
+						<span class="skill-desc">Just starting out in web development</span>
+					</label>
+				</div>
+				<div class="skill-option">
+					<input type="radio"
+								 id="intermediate"
+								 name="skillLevel"
+								 value="intermediate"
+								 [(ngModel)]="skillLevel">
+					<label for="intermediate">
+						<span class="skill-title">Intermediate</span>
+						<span class="skill-desc">Comfortable with basics, ready for more</span>
+					</label>
+				</div>
+				<div class="skill-option">
+					<input type="radio"
+								 id="advanced"
+								 name="skillLevel"
+								 value="advanced"
+								 [(ngModel)]="skillLevel">
+					<label for="advanced">
+						<span class="skill-title">Advanced</span>
+						<span class="skill-desc">Experienced developer seeking mastery</span>
+					</label>
+				</div>
+			</div>
+			<button type="submit" class="skill-submit">Get Personalized Path</button>
+		</form>
+	</div>
+</section>

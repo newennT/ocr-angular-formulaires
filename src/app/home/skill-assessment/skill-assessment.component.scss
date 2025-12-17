@@ -1,0 +1,107 @@
+.skill-assessment {
+  padding: 6rem 7%;
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.skill-container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.skill-container h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #818cf8 0%, #c4b5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.skill-container p {
+  color: #94a3b8;
+  margin-bottom: 3rem;
+  font-size: 1.25rem;
+}
+
+.skill-form {
+  background: #1e293b;
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.skill-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.skill-option {
+  position: relative;
+}
+
+.skill-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.skill-option label {
+  display: block;
+  padding: 1.5rem;
+  background: #0f172a;
+  border: 2px solid #334155;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.skill-option input[type="radio"]:checked + label {
+  border-color: #818cf8;
+  background: #1e293b;
+  box-shadow: 0 0 0 4px rgba(129, 140, 248, 0.1);
+}
+
+.skill-option label:hover {
+  border-color: #818cf8;
+  transform: translateY(-2px);
+}
+
+.skill-title {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #e2e8f0;
+}
+
+.skill-desc {
+  display: block;
+  color: #94a3b8;
+  font-size: 1rem;
+}
+
+.skill-submit {
+  width: 100%;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #818cf8 0%, #c4b5fd 100%);
+  color: white;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(129, 140, 248, 0.4);
+}
+
+.skill-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(129, 140, 248, 0.6);
+}
