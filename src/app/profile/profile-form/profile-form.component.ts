@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProfileService } from '../profile.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { tap } from 'rxjs';
 import { Profile } from '../profile';
+import { URL_REGEX } from '../../core/constants/URL_REGEX';
 
 @Component({
   selector: 'app-profile-form',
@@ -17,12 +18,12 @@ export class ProfileFormComponent {
   private formBuilder = inject(FormBuilder);
   private profileService = inject(ProfileService);
   profileForm = this.formBuilder.group({
-    name: [''],
-    title: [''],
-    bio: [''],
-    website: [''],
+    name: ['', [Validators.required]],
+    title: ['', [Validators.required]],
+    bio: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(240)]],
+    website: ['', [Validators.pattern(URL_REGEX)]],
     github: ['']
-  });
+  }, { updateOn: 'blur' });
 
   constructor() {
     this.profileForm.valueChanges.pipe(
@@ -33,5 +34,13 @@ export class ProfileFormComponent {
 
   onUpdateProfile(profile: Profile): void {
     this.profileService.setProfile(profile);
+  }
+
+  onSaveProfile(): void {
+    if (!this.profileForm.valid) {
+      alert('Please complete the form');
+      return;
+    }
+    console.log(this.profileForm.value);
   }
 }

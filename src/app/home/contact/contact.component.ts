@@ -19,27 +19,24 @@ import { URL_REGEX } from '../../core/constants/URL_REGEX';
 export class ContactComponent {
   private formBuilder = inject(FormBuilder);
   private coursesService = inject(CoursesService);
-
   contactForm = this.formBuilder.group({
-    name: ['', [Validators.required] ],
+    name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     course: ['', [Validators.required]],
     message: [''],
-    avatarUrl: ['', [Validators.pattern(URL_REGEX)]],
-  }, {updateOn: 'blur'});
-
+    avatarUrl: ['', [Validators.pattern(URL_REGEX)]]
+  }, { updateOn: 'blur' });
   selectedCourse$ = this.contactForm.valueChanges.pipe(
     map(form => form.course),
     filter(course => course !== ''),
     distinctUntilChanged(),
     map(course => this.coursesService.getCourseByType(course)),
   );
-
   avatarUrl$ = this.contactForm.get('avatarUrl')!.valueChanges;
 
   onSubmitForm() {
-    if(!this.contactForm.valid) {
-      alert('Invalid form');
+    if (!this.contactForm.valid) {
+      alert('Please finish filling in the form before submitting.');
       return;
     }
     console.log(this.contactForm.value);
