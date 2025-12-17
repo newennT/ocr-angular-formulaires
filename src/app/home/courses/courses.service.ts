@@ -25,11 +25,15 @@ export class CoursesService {
     return [...this.courses];
   }
 
-  getCourseByType(type: 'html' | 'css' | 'javascript'): Course {
+  getCourseByType(type: string | null | undefined): Course {
+    if (!type) {
+      throw new Error('Course type required');
+    }
     switch (type) {
       case 'html': return this.courses[0];
       case 'css' : return this.courses[1];
-      case 'javascript': return this.courses[2]
+      case 'javascript': return this.courses[2];
+      default: throw new Error('Invalid course type');
     }
   }
 }
